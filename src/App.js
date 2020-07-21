@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import AgregarCita from './components/AgregarCita';
 import ListaCitas from './components/ListaCitas';
+import PropTypes from 'prop-types';
 
 //el state en el componente principal se utiliza cuando se quieren comunicar componentes
 //pero el state dentro de otros componentes se puede utilizar para validar algo y mostrar un mensaje en el propio componente

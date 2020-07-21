@@ -37,7 +37,8 @@ Cita.propTypes = {
         sintomas: PropTypes.string.isRequired,
         id: PropTypes.string.isRequired
 
-    })
+    }),
+    borrarCita: PropTypes.func.isRequired
 }
 
 export default Cita;
