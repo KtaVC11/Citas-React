@@ -9,6 +9,34 @@ class App extends Component {
   state = {
     citas: []
   }
+  //lee lo que hay en el storage y se lo pasa al state
+  componentDidMount() {
+    //console.log('Esta listo');
+    const citasLS = localStorage.getItem('citas');
+    if (citasLS) {
+      this.setState({
+        citas: JSON.parse(citasLS)
+      })
+    }
+  }
+
+  componentDidUpdate() {
+    //console.log('Algo cambio!..');
+    localStorage.setItem(
+      'citas',
+      JSON.stringify(this.state.citas)
+    )
+  }
+
+  /*componentWillMount() {
+    console.log("Yo me ejecuto antes");
+  }
+
+  componentWillUnmount() {
+    console.log('Yo hasta que cierra el componente');
+  }*/
+
+
 
   crearCita = (nuevaCita) => {
     //console.log(cita);
@@ -26,6 +54,25 @@ class App extends Component {
 
 
   }
+
+  //eliminar una cita
+  borrarCita = id => {
+    //obtener copia del state
+    const citasActuales = [...this.state.citas];
+
+    //borrar el elemento del state
+    //console.log('Antes..');
+    //console.log(citasActuales);
+    const citas = citasActuales.filter(cita => cita.id !== id);
+
+    //console.log('Despues..');
+    //console.log(citas);
+
+    //actualizar el state
+    this.setState({
+      citas
+    });
+  }
   render() {
     return (
       <div className="container" >
@@ -42,6 +89,7 @@ class App extends Component {
           <div className="col-md-6">
             <ListaCitas
               citas={this.state.citas}
+              borrarCita={this.borrarCita}
             />
           </div>
 

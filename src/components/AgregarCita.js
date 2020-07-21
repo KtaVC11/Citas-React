@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import uuid from 'uuid'; //esta libreria crea un id unico
 //el state revisa cuando no esten llenos tofos los campos agregar un error abajo 
 class AgregarCita extends Component {
@@ -112,6 +113,10 @@ class AgregarCita extends Component {
             </div>
         );
     }
+}
+
+AgregarCita.propTypes = {
+    crearCita: PropTypes.func.isRequired
 }
 
 export default AgregarCita;
